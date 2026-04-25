@@ -35,9 +35,20 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   
 
-
   function loadQuestion() {
     const currentQuestion = questions[currentQuestionIndex];
+
+    backBtn.classList.toggle('hidden', currentQuestionIndex === 0);
+    nextBtn.textContent = currentQuestionIndex === questions.length - 1 ?'Finish' : 'Next';
+    if (currentQuestionIndex === 1){
+      backBtn.classList.add('hidden')
+      backBtn.classList.remove('hidden')
+    }
+    if(currentQuestionIndex < questions.length -1) {
+      nextBtn.classList.add('hidden')
+      nextBtn.classList.remove('hidden')
+    }
+
     questionElement.textContent = currentQuestion.question;
     optionsElement.innerHTML = '';
 
@@ -63,16 +74,6 @@ document.addEventListener('DOMContentLoaded', function() {
       const correctButton = optionsElement.children[questions[currentQuestionIndex].answer];
       correctButton.classList.add('bg-green-100', 'border-green-400');
     }
-
-
-    setTimeout(() => {
-      currentQuestionIndex++;
-      if (currentQuestionIndex < questions.length) {
-        loadQuestion();
-      } else {
-        showResults();
-      }
-    }, 1000);
   }
   
   
@@ -84,4 +85,22 @@ document.addEventListener('DOMContentLoaded', function() {
       <button onclick="location.reload()" class="bg-gray-800 text-white px-4 py-2 rounded">Restart</button>
     `;
   }
+
+  nextBtn.addEventListener('click', () => {
+    // if not at the end, then index++ then load question()
+    if(currentQuestionIndex < questions.length -1) {
+      currentQuestionIndex++
+      loadQuestion();
+    }else {
+      showResults();
+    }
+  });
+
+  backBtn.addEventListener('click', () => {
+    // if index>0 , index --, then loadquestion()
+    if(currentQuestionIndex > 0) {
+      currentQuestionIndex--;
+      loadQuestion();
+    }
+  })
 });
