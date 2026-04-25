@@ -1,34 +1,27 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
+    <title>Quiz App</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="script.js"></script>
-    <title>Quiz app</title>
-  </head>
-  <body>
-    <!-- Start Screen -->
-    <div id="start-screen">
-        <h1>JavaScript Quiz</h1>
-            <p>10 questions · 1 minute per question</p>
-        <button id="start-btn">Start Quiz</button>
-    </div>
-    
-    <!-- Quiz Screen -->
-    <div id="quiz-screen" class="hidden">
-        <h1>JavaScript Quiz</h1>
-            <p>Question 1</p>
-        <button id="option-a">option-a</button>
-        <button id="option-b">option-b</button>
-        <button id="option-c">option-c</button>
-        <button id="option-d">option-d</button>
+</head>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+
+    <div class="bg-white p-8 rounded-lg shadow-md max-w-md w-full">
+        <div id="start-screen" class="text-center">
+            <h1 class="text-2xl font-bold mb-4">Science Quiz</h1>
+            <p class="mb-6 text-gray-600">Test your knowledge on the respiratory system!</p>
+            <button id="start-btn" class="bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600 transition">Start Quiz</button>
+        </div>
+
+        <div id="quiz-screen" class="hidden">
+            <h2 id="question" class="text-xl font-semibold mb-4 text-gray-800"></h2>
+            <div id="options" class="flex flex-col gap-3">
+            </div>
+            <div id="next-btn"></div> 
+        </div>
     </div>
 
-    <!-- Result Screen -->
-    <div id="result-screen" class="hidden">
-        <h1>JavaScript Quiz</h1>
-            <p>10 questions · you got 10 points</p>
-        <button id="start-btn">Start Again</button>
-    </div>
-    
+    <script src="script.js"></script>
+</body>
 </html>
